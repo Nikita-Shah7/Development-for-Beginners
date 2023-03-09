@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock</title>
+
+    <style type="text/css">
+
+        body {
+            background: #091921;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .clock-dial {
+            background: rgba(255, 255, 255, .7);
+            width: 95vh;
+            height: 95vh;
+            border-radius: 50%;
+            border: 2px solid black;
+            position: relative;
+        }
+
+        .clock-dial .num {
+            --rotangle: 0;
+            font-size: 3.5rem;
+            font-family: Algerian;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transform: rotate(var(--rotangle));
+        }
+
+        .clock-dial .num1 {
+            --rotangle: 30deg;
+        }
+
+        .clock-dial .num2 {
+            --rotangle: 60deg;
+        }
+
+        .clock-dial .num3 {
+            --rotangle: 90deg;
+        }
+
+        .clock-dial .num4 {
+            --rotangle: 120deg;
+        }
+
+        .clock-dial .num5 {
+            --rotangle: 150deg;
+        }
+
+        .clock-dial .num6 {
+            --rotangle: 180deg;
+        }
+
+        .clock-dial .num7 {
+            --rotangle: 210deg;
+        }
+
+        .clock-dial .num8 {
+            --rotangle: 240deg;
+        }
+
+        .clock-dial .num9 {
+            --rotangle: 270deg;
+        }
+
+        .clock-dial .num10 {
+            --rotangle: 300deg;
+        }
+
+        .clock-dial .num11 {
+            --rotangle: 330deg;
+        }
+
+        .clock-dial::after {
+            content: ' ';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 6vh;
+            height: 6vh;
+            border-radius: 50%;
+            background-color: black;
+            z-index: 11;
+            transform: translate(-50%, -50%);
+        }
+
+        .clock-dial .hand {
+            --rothand: 0deg;
+            position: absolute;
+            border: 2px solid white;
+            border-radius: 70%;
+            z-index: 10;
+            transform-origin: bottom;
+            transform: translate(-50%, 0) rotate(var(--rothand));
+        }
+
+        .clock-dial .hr {
+            bottom: 50%;
+            left: 48.7%;
+            background-color: black;
+            width: 9px;
+            height: 30%;
+        }
+
+        .clock-dial .min {
+            bottom: 50%;
+            left: 48.5%;
+            background-color: black;
+            width: 15px;
+            height: 45%;
+        }
+
+        .clock-dial .sec {
+            bottom: 50%;
+            left: 49%;
+            background-color: red;
+            width: 3px;
+            height: 48%;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="clock-dial">
+        <div class="hand hr" id=hrs></div>
+        <div class="hand min" id=mins></div>
+        <div class="hand sec" id=secs></div>
+        <div class="num num1">1</div>
+        <div class="num num2">2</div>
+        <div class="num num3">3</div>
+        <div class="num num4">4</div>
+        <div class="num num5">5</div>
+        <div class="num num6">6</div>
+        <div class="num num7">7</div>
+        <div class="num num8">8</div>
+        <div class="num num9">9</div>
+        <div class="num num10">10</div>
+        <div class="num num11">11</div>
+        <div class="num num12">12</div>
+    </div>
+
+    <script type="text/javascript">
+
+        setInterval(timing, 500);
+
+        function timing() {
+            var today = new Date();
+            var hour = today.getHours();
+            var minut = today.getMinutes();
+            var seco = today.getSeconds();
+            var hrrot = 30 * hour + 0.5 * minut + seco / 120;
+            var minrot = 6 * minut + 0.1 * seco;
+            var secrot = 6 * seco;
+
+            var hrhand = document.getElementById("hrs").style.transform = `rotate(${hrrot}deg)`;
+            var minhand = document.getElementById("mins").style.transform = `rotate(${minrot}deg)`;
+            var sechand = document.getElementById("secs").style.transform = `rotate(${secrot}deg)`;
+
+        }        
+    </script>
+
+</body>
+</html>
