@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            margin: 10rem auto;
+        }
+
+        #watch {
+            font-size: 40px;
+            text-align: center;
+        }
+
+        #date {
+            font-size: 60px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <p id="watch"></p>
+    <br><br>
+    <p id="date"></p>
+
+    <script type="text/javascript">
+        setInterval(clock, 1000);
+        function clock() {
+            var nik = new Date();
+            var hour = nik.getHours();
+            var min = nik.getMinutes();
+            var sec = nik.getSeconds();
+            var date = nik.getDate();
+            var day = nik.getDay() + 1;
+            var month = nik.getMonth() + 1;
+            var year = nik.getFullYear();
+            var ext = 'AM';
+
+            if (hour > 12) { hour = hour - 12; ext = 'PM' }
+            if (hour < 10) { hour = '0' + hour }
+            if (min < 10) { min = '0' + min }
+            if (sec < 10) { sec = '0' + sec }
+            if (day == 1) day = 'Sunday';
+            if (day == 2) day = 'Monday';
+            if (day == 3) day = 'Tuesday';
+            if (day == 4) day = 'Wednesday';
+            if (day == 5) day = 'Thursday';
+            if (day == 6) day = 'Friday';
+            if (day == 7) day = 'Saturday';
+            if (month == 1) month = 'January';
+            if (month == 2) month = 'February';
+            if (month == 3) month = 'March';
+            if (month == 4) month = 'April';
+            if (month == 5) month = 'May';
+            if (month == 6) month = 'June';
+            if (month == 7) month = 'July';
+            if (month == 8) month = 'August';
+            if (month == 9) month = 'September';
+            if (month == 10) month = 'October';
+            if (month == 11) month = 'November';
+            if (month == 12) month = 'December';
+            document.getElementById('watch').innerHTML = hour + ':' + min + ':' + sec + ' ' + ext;
+            document.getElementById('date').innerHTML = month + ' ' + date + ', ' + year + ', ' + day;
+        }
+    </script>    
+</body>
+</html>
