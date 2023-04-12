@@ -1,5 +1,4 @@
 import { memo } from 'react';
-// import { check } from 'express-validator';
 import "./ColorForm.scss";
 
 const ColorForm = (props) => {  
