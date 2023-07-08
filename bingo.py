@@ -4,11 +4,6 @@ requirements ::
     2. pip install pygame = 2.5.0
 """
 
-"""
-INSPIRED BY :: https://github.com/Rohan-231
-"""
-
-
 import math
 import numpy  # to build matrix
 import pygame  # graphics
@@ -124,6 +119,8 @@ def declare_winner():
     screen.blit(myText,( (BOARD_WIDTH-myText.get_width())/2, (SQUARE_SIZE-myText.get_height())/2) )
     pygame.display.update()
     print(declare)
+    # since we use pygame, we need to handle each event manually
+    pygame.image.save(screen,r"D:/Projects/Python/a1.jpeg")
     pygame.time.wait(4000)
     pygame.quit()
 
@@ -176,3 +173,8 @@ while not game_over:
 if WINNER:
     declare_winner()
 print("***THANK YOU***")
+
+
+"""
+INSPIRED BY :: https://github.com/Rohan-231
+"""
